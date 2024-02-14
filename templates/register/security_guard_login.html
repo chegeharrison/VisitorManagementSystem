@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Security Guard Login</title>{% endblock %}
+
+{% block content %}
+  <h2>Security Guard Login</h2>
+  <form method="post" action="{% url 'security_guard_login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+
+    <!-- Toggler Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Items -->
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        {% if not user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Login
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'login' %}">Admin Login</a></li>
+              <li><a class="dropdown-item" href="{% url 'security_guard_login' %}">Security login</a></li>
+              <li><a class="dropdown-item" href="{% url 'department_admin_login' %}">Department Admin Login</a></li>
+              <hr class="dropdown-divider">
+            </ul>
+          </li>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+          {% if user.userprofile.user_type == 'security' %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'security_guard_logout' %}">Logout</a>
+            </li>
+          {% elif user.userprofile.user_type == 'department' %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'department_admin_logout' %}">Logout</a>
+            </li>
+          {% endif %}
+        {% else %}
+          
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+

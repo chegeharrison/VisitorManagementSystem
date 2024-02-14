@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} <title>Visitor</title> {% endblock %}
+
+{% block content %} 
+{% include 'navbar.html' %}
+<form method="post" action="{% url 'new_visitor' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="New Visitor">
+  </form>
+
+
+
+
+
+{% endblock %}

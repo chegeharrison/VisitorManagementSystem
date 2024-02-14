@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %} <title>Visitors Record</title> {% endblock %}
+
+{% block content %} 
+  {% include 'navbar.html' %}
+  <!-- <h2>Today's Visitors Record</h2> -->
+
+  <table>
+    <legend>Today's Visitors Record</legend>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>ID Number</th>
+        <th>ID Image</th>
+        <th>Date</th>
+        <th>Time In</th>
+        <th>Time Out</th>
+        <th>Attended</th>
+        <th>Department</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for visitor in visitors %}
+        <tr>
+          <td>{{ visitor.id }}</td>
+          <td>{{ visitor.first_name }}</td>
+          <td>{{ visitor.last_name }}</td>
+          <td>{{ visitor.email }}</td>
+          <td>{{ visitor.phone }}</td>
+          <td>{{ visitor.id_number }}</td>
+          <td><img src="#" alt="ID Image"></td>
+          <td>{{ visitor.date }}</td>
+          <td>{{ visitor.time_in }}</td>
+          <td>{{ visitor.time_out }}</td>
+          <td>{{ visitor.attended }}</td>
+          <td>{{ visitor.department }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+

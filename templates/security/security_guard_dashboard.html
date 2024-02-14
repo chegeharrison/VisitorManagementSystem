@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %} <title>Visitors Record</title> {% endblock %}
+
+{% block content %} 
+{% include 'navbar.html' %}
+<h2>Visitors Record</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>N0</th>
+      <th>Date</th>
+      <th> VisitorName</th>
+      <th>ID Number</th>
+      <th>ID Image</th>
+      <th>Phone Number</th>
+      <th>Time In</th>
+      <th>Time Out</th>
+      <th>Attended</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for visitor in visitors %}
+      <tr>
+        <td>{{ visitor.entry_number }}</td>
+        <td>{{ visitor.date }}</td>
+        <td>{{ visitor.first_name }} {{ visitor.last_name }}</td>
+        <td>{{ visitor.id_number }}</td>
+        <td><a href="#" target="_blank">View Image</a></td>
+        <td>{{ visitor.phone }}</td>
+        <td>{{ visitor.time_in }}</td>
+        <td>{{ visitor.time_out }}</td>
+        <td>
+            <td>
+                {% if not visitor.attended %}
+                    <a href="{% url 'check_in_visitor' visitor.id %}">Check In</a>
+                {% elif not visitor.check_out_time %}
+                    <a href="{% url 'check_out_visitor' visitor.id %}">Check Out</a>
+                {% endif %}
+            </td>
+        </td>
+        
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+
+
+{% endblock %}
