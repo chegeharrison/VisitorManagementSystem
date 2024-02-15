@@ -4,9 +4,19 @@
 
 {% block content %} 
 {% include 'navbar.html' %}
-<h2>Welcome home</h2>
 
-
+{% if user.is_authenticated %}
+    {% if user.userprofile.user_type == 'security' %}
+        <p>Welcome, Security Guard {{ user.username }}!</p>
+        <!-- Additional content for security guards -->
+    {% elif user.userprofile.user_type == 'department' %}
+        <p>Welcome, Department Admin {{ user.username }}!</p>
+        <!-- Additional content for department admins -->
+    {% else %}
+        <p>Welcome, User {{ user.username }}!</p>
+        <!-- Additional content for other user types -->
+    {% endif %}
+{% endif %}
 
 
  <link rel="stylesheet" href="{% static 'css/main.css'%}">

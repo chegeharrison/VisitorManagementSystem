@@ -2,8 +2,9 @@
 {% block title %} <title>Visitor</title> {% endblock %}
 
 {% block content %} 
-{% include 'navbar.html' %}
+{% include 'security/security_nav.html' %}
 <form method="post" action="{% url 'new_visitor' %}" enctype="multipart/form-data">
+  <legend>Register New Vistors</legend>
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="New Visitor">

@@ -3,7 +3,7 @@
 {% block title %} <title>Visitors Record</title> {% endblock %}
 
 {% block content %} 
-  {% include 'navbar.html' %}
+{% include 'security/security_nav.html' %}
   <!-- <h2>Today's Visitors Record</h2> -->
 
   <table>
@@ -11,6 +11,7 @@
     <thead>
       <tr>
         <th>ID</th>
+        <th>Date</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
@@ -28,6 +29,7 @@
       {% for visitor in visitors %}
         <tr>
           <td>{{ visitor.id }}</td>
+          <td>{{ visitor.date}}</td>
           <td>{{ visitor.first_name }}</td>
           <td>{{ visitor.last_name }}</td>
           <td>{{ visitor.email }}</td>

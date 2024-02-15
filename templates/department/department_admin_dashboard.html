@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
+
+
 {% block title %}<title>Department Admin Dashboard</title>{% endblock %}
 
 {% block content %}
+{% include 'department/department_nav.html' %}
 
 <h2>Department Admin Dashboard - {{ request.user.department }}</h2> 
 <table>

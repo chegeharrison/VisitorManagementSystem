@@ -17,5 +17,11 @@ class VisitorForm(forms.ModelForm):
 
 
 class SecurityGuardLoginForm(forms.Form):
-    username = forms.CharField(label='Username', max_length=100)
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    username = forms.CharField( max_length=100, label='Username')
+    password = forms.CharField(widget=forms.PasswordInput,label='Password')
+
+class AdminLoginForm(forms.Form):
+    username = forms.CharField(max_length=150, label='Username')
+    password = forms.CharField(widget=forms.PasswordInput, label='Password')
+    department = forms.ModelChoiceField(queryset=Department.objects.all(), empty_label=None, label='Department')
+

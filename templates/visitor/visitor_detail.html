@@ -1,3 +1,8 @@
+{% extends 'base.html' %}
+{% block title %} <title>Visitor Detail</title> {% endblock %}
+{% block content%}
+
+{% include 'security/security_nav.html' %}
 <h2>Visitor Details</h2>
 <p>No: {{ visitor.entry_number }}</p>
 <p>Date: {{ visitor.date }}</p>
@@ -8,3 +13,5 @@
 <p>Time In: {{ visitor.time_in }}</p>
 <p>Time Out: {{ visitor.time_out }}</p>
 <p>Attended: {{ visitor.attended }}</p>
+
+{% endblock %}
