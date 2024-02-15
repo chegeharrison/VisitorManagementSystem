@@ -1,17 +1,57 @@
 {% extends 'base.html' %}
-{% block title %} <title>Visitor</title> {% endblock %}
+{% block title %}<title>Visitor</title>{% endblock %}
 
-{% block content %} 
-{% include 'security/security_nav.html' %}
-<form method="post" action="{% url 'new_visitor' %}" enctype="multipart/form-data">
-  <legend>Register New Vistors</legend>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="New Visitor">
-  </form>
+{% block content %}
+  {% include 'security/security_nav.html' %}
+  <div class="container">
+    <form method="post" action="{% url 'new_visitor' %}" enctype="multipart/form-data" class="mx-auto mt-5">
+      <legend class="text-center">Register New Visitor</legend>
+      {% csrf_token %}
+
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+          {{ form.first_name }}
+        </div>
+        <div class="col-md-4">
+          <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+          {{ form.last_name }}
+        </div>
+        <div class="col-md-4">
+          <label for="{{ form.phone.id_for_label }}">Phone:</label>
+          {{ form.phone }}
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label for="{{ form.email.id_for_label }}">Email ID:</label>
+          {{ form.email }}
+        </div>
+        <div class="col-md-4">
+          <label for="{{ form.id_number.id_for_label }}">ID number:</label>
+          {{ form.id_number }}
+         
+        </div>
+        <div class="col-md-4">
+          <label for="{{ form.department.id_for_label }}">Department:</label>
+          {{ form.department }}
+          </div>
+      </div>
 
 
+        <div class="col-md-3">
+          <div class="col-md-4">
+          <label for="{{ form.id_image.id_for_label }}">ID Image:</label>
+          {{ form.id_image }}
+          </div>
+        </div>
 
-
-
+          <div class="row mb-6">
+              <label for="{{ form.attended.id_for_label }}">Attended:</label>
+              {{ form.attended }}
+            </div>
+      <input type="submit" value="New Visitor" class="btn btn-primary text-center">
+    </form>
+  </div>
 {% endblock %}

@@ -116,7 +116,7 @@ def check_out_visitor(request, visitor_id):
 
 
 # Security
-# views.py (security guard login view)
+
 def security_guard_login(request):
     if request.method == 'POST':
         form = SecurityGuardLoginForm(request.POST)
@@ -126,15 +126,15 @@ def security_guard_login(request):
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                # Check if the user type is 'security' before logging in
+                
                 if user.userprofile.user_type == 'security':
                     login(request, user)
-                    return redirect('new_visitor')  # Redirect to the desired view after successful login
+                    return redirect('new_visitor')  
                 else:
-                    # User with 'department' user type trying to access security login
+                    
                     messages.error(request, 'Invalid user type for security login.')
             else:
-                # Invalid credentials, handle accordingly
+                
                 messages.error(request, 'Invalid username or password.')
     else:
         form = SecurityGuardLoginForm()

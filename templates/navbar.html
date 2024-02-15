@@ -16,9 +16,6 @@
             </li>
           {% elif user.userprofile.user_type == 'department' %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'security_guard_dashboard' %}">Security Dashboard</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="{% url 'department_admin_dashboard' %}">Admin Dashboard</a>
             </li>
             <li class="nav-item">
